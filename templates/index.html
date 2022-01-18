@@ -1,0 +1,232 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home{% endblock title %}
+
+{% block body %}
+<style>
+  .my-form {
+    background-color: #3aa08e;
+    border-radius: 10px;
+    padding-top: 25px;
+  }
+
+  .contact-form {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+</style>
+<main>
+  <div class="ml-0 mr-0 mb-5">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner container-fluid">
+        <div class="carousel-item active">
+          <img src="{% static 'images/r-architecture-TRCJ-87Yoh0-unsplash.jpg' %}" class="d-block w-100 " width="100%"
+            height="500px" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/naomi-hebert-MP0bgaS_d1c-unsplash.jpg' %}" class="d-block w-100" width="100%"
+            height="500px" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          {% comment %} <img src="..." class="d-block w-100" alt="..."> {% endcomment %}
+          <img src="{% static 'images/r-architecture-TRCJ-87Yoh0-unsplash.jpg' %}" class="d-block w-100 " width="100%"
+            height="500px" alt="...">
+
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="container" style="background-color: #3AA08E; color: #fff;">
+    <div class="p-5 mb-4  rounded-3" style="background-color: #3AA08E;">
+      <div class="container-fluid py-5" style="background-color: #3AA08E;">
+        <h1 class="display-5 fw-bold">Free Kitchen Design &amp; Planning Advice</h1>
+        <p class="col-md-8 fs-4">With our years of experience our designer will design Your Perfect Kitchen.
+          Make that Kitchen design a Reality.</p>
+        <!-- <button class="btn btn-primary btn-lg" type="button">Example button</button> -->
+      </div>
+    </div>
+  </div>
+  <hr class="featurette-divider container">
+  <div class="container form">
+    <div class="row contact-row">
+      <div class="col-sm-6 book-text">
+        <h1>Book A Free Appointment Today</h1><br>
+        <p>
+          CHAT TO US Either Online here or Book your free kitchen design consultation with one of
+          our designers by filling the below form? You can chat through anything you need,
+          including layout and design requirements.
+          You can even see what your kitchen will look like before you buy it.
+        </p>
+      </div>
+      <div class="col-1"></div><br>
+      <div class="col-sm my-form form-control">
+        <form action="/" method="post">
+          {% csrf_token %}
+          {% comment %} <input type="hidden" name="csrfmiddlewaretoken"
+            value="IsN4XcVZFPw7LBDR9J09LCu5igTmhFjbk5m8Iq1GjrBYxjHiGT9GWugaYt1vNKSC"> {% endcomment %}
+
+          <input type="text" class="form-control p-3 rounded-5" placeholder="Name" required="" name="name"><br>
+          <input type="email" class="form-control" placeholder="Email" required="" name="email"><br>
+          <input type="text" class="form-control" placeholder="Phone No" required="" name="phone"><br>
+          <textarea placeholder="Detail" required="" name="detail" class="form-control"></textarea>
+          <label class="text-light mb-2">
+            For further information about how we use your personal data
+            please see our <a href="/" class="link-primary">GDRP Policy</a> and <a href="/">Terms &amp; Conditions</a>.
+          </label><br>
+          {% comment %} <script src="https://www.google.com/recaptcha/api.js"></script>
+          <div class="g-recaptcha mx-auto" data-callback="recaptchaCallback" style="width: fit-content"
+            data-sitekey="6LeKPnocAAAAAEnW1LncwgOqxXCQ3yqIWMs2rIxm">
+            <div style="width: 304px; height: 78px;">
+              <div><iframe title="reCAPTCHA"
+                  src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LeKPnocAAAAAEnW1LncwgOqxXCQ3yqIWMs2rIxm&amp;co=aHR0cHM6Ly90a2NraXRjaGVucy5jby51azo0NDM.&amp;hl=en&amp;v=TDBxTlSsKAUm3tSIa0fwIqNu&amp;size=normal&amp;cb=nqwdnyqjn7uf"
+                  width="304" height="78" role="presentation" name="a-2wxi9na07dr9" frameborder="0" scrolling="no"
+                  sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+              </div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response"
+                style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+            </div><iframe style="display: none;"></iframe>
+          </div> {% endcomment %}
+          <div class="col-sm text-center" style="padding-bottom: 15px;">
+            <button type="submit" class="btn btn-primary btn-md mt-3 w-50 course-pointer">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container marketing">
+    <!-- Three columns of text below the carousel -->
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette ">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Give Us A Call and Get A Free Quote! <span class="text-muted">It’ll blow your
+            mind.</span></h2>
+        <p class="lead">
+
+          We can Plan, Design,Supply and Install the kitchen the material or fit the kitchen.
+          Your house is your home but it’s also your investment.
+          In the long term it is worthwhile getting the best possible plan, design and installation.
+          We provide quality materials that are stylish but also practical.
+
+          We check the market on a regular basis and compare our prices with
+          well known national warehouse kitchen suppliers and we know we can Save you Money.</p>
+      </div>
+      <div class="col-md-5">
+        <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+        <img src="{% static 'images/r-architecture-TRCJ-87Yoh0-unsplash.jpg' %}" class="d-block  " width="465"
+          height="500" alt="...">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this
+          layout would work with some actual real-world content in place.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+        <img src="{% static 'images/r-architecture-TRCJ-87Yoh0-unsplash.jpg' %}" class="d-block  " width="465"
+          height="500" alt="...">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
+          intended to be actually read, simply here to give you a better view of what this would look like with some
+          actual content. Your content.</p>
+      </div>
+      <div class="col-md-5">
+        <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+        <img src="{% static 'images/r-architecture-TRCJ-87Yoh0-unsplash.jpg' %}" class="d-block  " width="465"
+          height="500" alt="...">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div>
+
+  <div class="container">
+    <footer class="py-0">
+      <div class="row">
+        <div class="col-6">
+          <!-- <h5>Section</h5> -->
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Services</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact</a></li>
+          </ul>
+        </div>
+  
+        <div class="col-4 offset-1">
+          <form>
+            <h5>Subscribe to our newsletter</h5>
+            <p>Monthly digest of whats new and exciting from us.</p>
+            <div class="d-flex w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Email address</label>
+              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="d-flex justify-content-between py-4 my-4 border-top">
+        <p>© 2021 Company, Inc. All rights reserved.</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+          <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</main>
+{% endblock body %}
